@@ -9,21 +9,36 @@
 
     <link rel="stylesheet" type="text/css" href="/css/animations.css" />
     <style>
+    	.center {
+    		display: flex;
+    		flex-direction: row;
+	      justify-content: center;
+    	}
+
+    	#stephen-head {
+    		max-width: 300px;
+    		max-height: 300px;
+    		padding: 30px;
+  			transform: translatey(0px);
+  			animation: float 3s ease-in-out infinite;
+    	}
+    	
+    	.answer-container {
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    		min-height: 355px;
+    	}
+
     	.inputs-container {
+    		margin-top: 10px;
     		display: flex;
     		flex-direction: row;
     		justify-content: center;
     		align-items: flex-end;
-    		margin-top: 100px;
     	}
 
-    	.stephen-container {
-    		display: flex;
-    		flex-direction: row;
-    		justify-content: center;
-    	}
-
-    	#question-text {
+    	#question-input {
     		min-width: 400px;
     		padding: 10px;
     	}
@@ -31,43 +46,51 @@
     	#ask {
     		padding: 10px;
     	}
-
-    	#stephen-head {
-    		max-width: 300px;
-    		max-height: 300px;
-    		padding: 30px;
-    		margin-top: 40px;
-    		margin-bottom: 100px;
-  			transform: translatey(0px);
-  			animation: float 3s ease-in-out infinite;
-    	}
-
   	</style>
   </head>
 
-  <body background="universe-54a.jpg">
+  <body>
+
   	<div class="container-fluid">
-  		<div class="row">
-  			<div class="col-sm stephen-container">
-  				<img id="stephen-head" class="float" src="./stephen.jpg" alt="Stephen Hawking"/>
-  				<span id="answer"></span>
-  			</div>
+
+  		<!-- Hawking's floating head -->
+  		<div class="row center">
+				<img id="stephen-head" class="float" src="./stephen.jpg" alt="Stephen Hawking"/>
   		</div>
+
+  		<!-- Answer container -->
+  		<div class="container answer-container">
+				<p id="answer"></p>
+  		</div>
+
+  		<!-- Input container -->
   		<div class="row">
 	  		<div class="col-sm inputs-container">
-			    <input tyle="text" id="question-text"></input>
+			    <input tyle="text" id="question-input"></input>
 			    <button id="ask">Ask</button>
 			  </div>
 			</div>
 
 	  </div>
+
+	  <!-- Audio source -->
 	  <div id="audio"></div>
   </body>
 
   <script>
-		const SPEAK_CONFIG = { speed: 155, wordgap: 1, pitch: 65  }
+		const SPEAK_CONFIG = { speed: 150, wordgap: 3, pitch: 62  }
 		const callSpeak = (text) => speak(text, SPEAK_CONFIG)
-	  const answer = (question) => callSpeak(question)
+	  const deliverAnswer = (answer) => {
+	  	// Deliver text
+	  	const span = document.getElementById("answer")
+	  	while (span.firstChild) {
+	  	    span.removeChild(span.firstChild);
+	  	}
+	  	span.appendChild(document.createTextNode(answer));
+
+	  	// Deliver audio
+	  	callSpeak(answer)
+	  }
 
 
 		const includes = (text, keywords) => keywords.reduce((acc, word) => acc && text.includes(word))
@@ -104,12 +127,14 @@
 			answer: ""
 		},{
 			keywords: ["can", "tell", "story", "inspire"],
+			answer: "It became clear something was not quite right with me, I fell over and had great difficulty getting up again.\n\nMy mother realized something was wrong and took me to the doctor.I spent weeks in Bart's Hosptal and had many tets.\n\nThey never actually told me what was wrong, but I guessed enough to know it was pretty bad.\n\nIn fact, the doctor who diagnosed me wahsed his hands of me and I never saw him again. He felt that there was nothing that could be done and first I became depressed, I seemed to be getting wors pretty rapidly.\n\nThere didn't seem any point working on my PhD, because I did not know if I live long enough to finish it.\n\nI had come to Cambridge to do cosmology, and cosmology I was determined to do. Then the condition developed more slowly, and I began to make progrees in my work. After my expectations had been reduced to zero, every new day became a bonus, and I began to appreciate everything I did have. And there was also a young woman called Jane, whom I had met at party. Getting engaged lifted my spirits, and I realized while there's life, there is hope. There are many ambitious experiments planned for the future.\n\nWe will map the positions of billions of galaxies, and we will beter undertand our place in the universe.\n\nBut we must also continiue  to go into space for the future of humanity. I don't think we will survive another thousands years without escaping beyond our fragile planet.\n\nIt has been a glorius time to be alive, doung research in theoritical physics. The fact that we humans, who are ourselves mere collections of fundamental particles of nature, have been able to come this cloe to an understanding of the laws governing us and our universe is a grea triumph, and I am happy if I have made a small contribution. I want to share my excitement and enthusiasm about this quest, so remember to look up at the stars and not down at your feet.\n\nTry to make sence of what you see, and wonder about what makes the universe exist. Be curious. And however difficult life may seem, there is always something you can do an succeed at. It matters that you don't just give up. While there's life, there is hope."
+		},{
+			keywords: ["can", "tell", "inspiring"],
 			answer: ""
 		},{
 			keywords: ["can", "tell", "joke"],
 			answer: "A quark doesn't walk into a bar and orders a drink from the bar. Haha!"
-		}
-		]
+		}]
 
 		function evaluateQuestion(question) {
 			for (let i in keygroups) {
@@ -119,16 +144,16 @@
 						i -= 1
 						kg = keygroups[i]
 					}
-					return answer(kg.answer)
+					return deliverAnswer(kg.answer)
 				}
 			}
 
-			return answer(defaultAnswer)
+			return deliverAnswer(defaultAnswer)
 		}
 
 	  function onLoad() {
 	    document.getElementById("ask").onclick = () => {
-	    	const question = document.getElementById("question-text").value.toLowerCase()
+	    	const question = document.getElementById("question-input").value.toLowerCase()
 	    	evaluateQuestion(question)
 	    }
 		}
