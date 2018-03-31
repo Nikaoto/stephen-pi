@@ -1,0 +1,37 @@
+.center {
+	display: flex;
+	flex-direction: row;
+  justify-content: center;
+}
+
+#stephen-head {
+	max-width: 300px;
+	max-height: 300px;
+	padding: 30px;
+		transform: translatey(0px);
+		animation: float 3s ease-in-out infinite;
+}
+
+.answer-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 355px;
+}
+
+.inputs-container {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+#question-input {
+	min-width: 400px;
+	padding: 10px;
+}
+
+#ask {
+	padding: 10px;
+}
