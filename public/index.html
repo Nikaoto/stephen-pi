@@ -45,17 +45,18 @@
   	</style>
   </head>
 
-  <body>
+  <body background="universe-54a.jpg">
   	<div class="container-fluid">
   		<div class="row">
   			<div class="col-sm stephen-container">
   				<img id="stephen-head" class="float" src="./stephen.jpg" alt="Stephen Hawking"/>
+  				<span id="answer"></span>
   			</div>
   		</div>
   		<div class="row">
 	  		<div class="col-sm inputs-container">
 			    <input tyle="text" id="question-text"></input>
-			    <button id="ask">Talk</button>
+			    <button id="ask">Ask</button>
 			  </div>
 			</div>
 
@@ -64,20 +65,79 @@
   </body>
 
   <script>
-  	const SPEAK_CONFIG = { speed: 150, wordgap: 1, pitch: 60  }
-  	const callSpeak = (text) => speak(text, SPEAK_CONFIG)
+		const SPEAK_CONFIG = { speed: 155, wordgap: 1, pitch: 65  }
+		const callSpeak = (text) => speak(text, SPEAK_CONFIG)
+	  const answer = (question) => callSpeak(question)
 
-  	function onLoad() {
-	  	document.getElementById("ask").onclick = () => {
-	  		callSpeak(document.getElementById("question-text").value)
-	  	}
-	  }
 
+		const includes = (text, keywords) => keywords.reduce((acc, word) => acc && text.includes(word))
+		const defaultAnswer = "I am both sure and unsure of your question. Try measuring it better."
+		const keygroups = [{
+			keywords: ["black", "hole"],
+			answer: "According to the theory of relativity, nothing can travel faster than light. Thus if light cannot escape,neither can anythingelse.everything is dragged back by the gravitational field. So one has a set of events, a region of space-time, from which it is not possible to escape to reach a distant observer. This region is what we now call a black hole.",
+		}, {
+			keywords: ["back", "time"],
+			answer: "A possible way to explain the absence of visitors from the future would be to say that the past is fixed because we have observed it and seen that it does not have the kind of warping needed to allow travel back from the future. On the other hand, the future is unknown and open, so it might well have the curvature required. This would mean that any time travel would be confined to the future. There would be no chance of Captain Kirk andthe Starship Enterprise turning up at the present time."
+		}, {
+			keywords: ["time", "travel"],
+			answer: ""
+		}, {
+			keywords: ["what", "universe"],
+			answer: "Today scientists describe the universe in terms of two basic partial theories – the general theory of relativity  and quantum mechanics. They are the great intellectual achievements of the first half of this century."
+		}, {
+			keywords: ["what", "general", "theory", "relativity"],
+			answer: "The general theory of relativity describes the force of gravity and the large-scale structure of the universe, that is, the structure on scales from only a few miles to as large as a million million million million (1 with twenty-four zeros after it) miles, the size of the observable universe."
+		}, {
+			keywords: ["what", "quantum", "mechanics"],
+			answer: "Quantum mechanics deals with phenomena on extremely small scales, such as a millionth of a millionth of an inch."
+		}, {
+			keywords: ["what", "hawking", "radiation"],
+			answer: "In fact, black holes should thermally create and emit sub-atomic particles, which I called a radiation, until they exhaust their energy and evaporate completely.According to this theory, black holes are not completely black, and neither do they last forever."
+		}, {
+			keywords: ["big", "bang", "theory"],
+			answer: "The Big Bang Theory is the leading explanation about how the universe began. At its simplest, it says the universe as we know it started with a small singularity,then inflated over the next 13.8 billion years to the cosmos that we know today."
+		}, {
+			keywords: ["what", "is", "the", "time"],
+			answer: "Ask Einstein"
+		},{
+			keywords: ["what's", "the", "time"],
+			answer: ""
+		},{
+			keywords: ["can", "tell", "story", "inspire"],
+			answer: ""
+		},{
+			keywords: ["can", "tell", "joke"],
+			answer: "A quark doesn't walk into a bar and orders a drink from the bar. Haha!"
+		}
+		]
+
+		function evaluateQuestion(question) {
+			for (let i in keygroups) {
+				if (includes(question, keygroups[i].keywords)) {
+					let kg = keygroups[i]
+					while (kg.answer === "") {
+						i -= 1
+						kg = keygroups[i]
+					}
+					return answer(kg.answer)
+				}
+			}
+
+			return answer(defaultAnswer)
+		}
+
+	  function onLoad() {
+	    document.getElementById("ask").onclick = () => {
+	    	const question = document.getElementById("question-text").value.toLowerCase()
+	    	evaluateQuestion(question)
+	    }
+		}
+
+		// Waits for document to load
 	  if (document.readyState !== "loading"){
-	  	onLoad()
+	    onLoad()
 	  } else {
-	  	document.addEventListener("DOMContentLoaded", onLoad)
+	    document.addEventListener("DOMContentLoaded", onLoad)
 	  }
   </script>
 </html>
-
