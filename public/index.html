@@ -92,8 +92,10 @@
 	  	callSpeak(answer)
 	  }
 
-
+	  // Text "analysis" :^)
 		const includes = (text, keywords) => keywords.reduce((acc, word) => acc && text.includes(word))
+
+		// Shamelessly hardcoded answers
 		const defaultAnswer = "I am both sure and unsure of your question. Try measuring it better."
 		const keygroups = [{
 			keywords: ["black", "hole"],
@@ -134,6 +136,9 @@
 		},{
 			keywords: ["can", "tell", "joke"],
 			answer: "A quark doesn't walk into a bar and orders a drink from the bar. Haha!"
+		},{
+			keywords: ["sword"],
+			answer: "O==():::::::>"
 		}]
 
 		function evaluateQuestion(question) {
