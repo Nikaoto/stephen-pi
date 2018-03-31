@@ -6,13 +6,33 @@
 
   	<!-- speak.js -->
     <script src="speakClient.js"></script>
+    <style>
+    	.main-div {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: center;
+    		align-items: flex-end;
+    		margin-top: 250px;
+    	}
+
+    	#question-text {
+    		min-width: 400px;
+    		padding: 10px;
+    	}
+
+    	#ask {
+    		padding: 10px;
+    	}
+
+  	</style>
   </head>
 
   <body>
   	<div class="container-fluid">
   		<div class="row">
-	  		<div class="col-sm">
-			    <textarea id="question-textarea"></textarea>
+	  		<div class="col-sm main-div">
+
+			    <input tyle="text" id="question-text"></input>
 			    <button id="ask">Talk</button>
 			  </div>
 			</div>
@@ -24,7 +44,7 @@
   <script>
   	function onLoad() {
 	  	document.getElementById("ask").onclick = () => {
-	  		speak(document.getElementById("question-textarea").value)
+	  		speak(document.getElementById("question-text").value)
 	  	}
 	  }
 
