@@ -64,9 +64,12 @@
   </body>
 
   <script>
+  	const SPEAK_CONFIG = { speed: 150, wordgap: 1, pitch: 60  }
+  	const callSpeak = (text) => speak(text, SPEAK_CONFIG)
+
   	function onLoad() {
 	  	document.getElementById("ask").onclick = () => {
-	  		speak(document.getElementById("question-text").value)
+	  		callSpeak(document.getElementById("question-text").value)
 	  	}
 	  }
 
