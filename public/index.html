@@ -7,12 +7,29 @@
   	<!-- speak.js -->
     <script src="speakClient.js"></script>
     <style>
-    	.main-div {
+    	.inputs-container {
     		display: flex;
     		flex-direction: row;
     		justify-content: center;
     		align-items: flex-end;
-    		margin-top: 250px;
+    		margin-top: 100px;
+    	}
+
+    	.stephen-container {
+    		display: flex;
+    		flex-direction: row;
+    		justify-content: center;
+    	}
+
+    	.float {
+		    -webkit-animation-direction: alternate;
+		    -webkit-animation-duration: 1.5s;
+		    -webkit-animation-iteration-count: infinite;
+		    -webkit-animation-timing-function: ease-in-out;
+		    animation-direction: alternate;
+		    animation-duration: 1.5s;
+		    animation-iteration-count: infinite;
+		    animation-timing-function: ease-in-out;
     	}
 
     	#question-text {
@@ -24,14 +41,40 @@
     		padding: 10px;
     	}
 
+    	#stephen-head {
+    		max-width: 300px;
+    		max-height: 300px;
+    		padding: 30px;
+    		margin-top: 40px;
+    		margin-bottom: 100px;
+  			transform: translatey(0px);
+  			animation: float 3s ease-in-out infinite;
+    	}
+
+    	@keyframes float {
+    		0% {
+    			transform: translatey(0px);
+    		}
+    		50% {
+    			transform: translatey(-20px);
+    		}
+    		100% {
+    			transform: translatey(0px);
+    		}
+    	}
+
   	</style>
   </head>
 
   <body>
   	<div class="container-fluid">
   		<div class="row">
-	  		<div class="col-sm main-div">
-
+  			<div class="col-sm stephen-container">
+  				<img id="stephen-head" class="float" src="./stephen.jpg" alt="Stephen Hawking"/>
+  			</div>
+  		</div>
+  		<div class="row">
+	  		<div class="col-sm inputs-container">
 			    <input tyle="text" id="question-text"></input>
 			    <button id="ask">Talk</button>
 			  </div>
