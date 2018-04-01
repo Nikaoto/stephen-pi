@@ -121,7 +121,7 @@
 		}
 
 	  function onLoad() {
-	  	const socket = io("https://stephen-pi.herokuapp.com/")
+	  	const socket = io()
 
 	  	socket.on("answer", (answer) => {
   			deliverAnswer(answer)
