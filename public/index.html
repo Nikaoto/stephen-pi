@@ -39,7 +39,7 @@
 	  <div id="audio"></div>
   </body>
 
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
 
   <script>
 		const SPEAK_CONFIG = { speed: 150, wordgap: 3, pitch: 62  }
@@ -121,10 +121,10 @@
 		}
 
 	  function onLoad() {
-	  	const socket = io.connect(location.protocol + "//" + document.domain + ":" + location.port)
+	  	const socket = io()
 
-	  	socket.on("answer", (ans) => {
-	  		deliverAnswer(ans)
+	  	socket.on("answer", (answer) => {
+  			deliverAnswer(answer)
 	  	})
 
 	    document.getElementById("ask").onclick = () => {
