@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 .center {
 	display: flex;
 	flex-direction: row;
@@ -34,4 +35,42 @@
 
 #ask {
 	padding: 10px;
+}
+
+body{
+	background-color: #130f40;
+	font-family: Roboto;
+	color: white;
+}
+.container-fluid{
+	width: 50%;
+	text-align: center;
+}
+#question-input{
+	width: 100%;
+	padding: 15px 10%;
+	text-align: center;
+	border: none;
+	font-family: Roboto;
+	background-color: #686de0;
+	color: white;
+	text-transform: uppercase;
+}
+.inputs-container button{
+	width: 100%;
+	padding: 15px 10%;
+	text-align: center;
+	border: none;
+	font-family: Roboto;
+	background-color: #30336b;
+	color: white;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+p{
+	text-align: left;
+	font-size: 12px;
+	border-left: 2px solid white;
+	padding-left: 15px;
+	margin-top: 50px;
 }
