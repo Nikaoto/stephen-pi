@@ -2,15 +2,15 @@
 .center {
 	display: flex;
 	flex-direction: row;
-  justify-content: center;
+  	justify-content: center;
 }
 
 #stephen-head {
 	max-width: 300px;
 	max-height: 300px;
 	padding: 30px;
-		transform: translatey(0px);
-		animation: float 3s ease-in-out infinite;
+	transform: translatey(0px);
+	animation: float 3s ease-in-out infinite;
 }
 
 .answer-container {
@@ -37,18 +37,20 @@
 	padding: 10px;
 }
 
-body{
+body {
 	background-color: #130f40;
 	font-family: Roboto;
 	color: white;
 }
+
 .container-fluid{
 	width: 50%;
 	text-align: center;
 }
+
 #question-input{
-	width: 100%;
-	padding: 15px 10%;
+	min-width: 400px;
+	padding: 10px;
 	text-align: center;
 	border: none;
 	font-family: Roboto;
@@ -56,9 +58,9 @@ body{
 	color: white;
 	text-transform: uppercase;
 }
+
 .inputs-container button{
-	width: 100%;
-	padding: 15px 10%;
+	padding: 15px;
 	text-align: center;
 	border: none;
 	font-family: Roboto;
@@ -66,11 +68,6 @@ body{
 	color: white;
 	cursor: pointer;
 	text-transform: uppercase;
-}
-p{
-	text-align: left;
-	font-size: 12px;
-	border-left: 2px solid white;
-	padding-left: 15px;
-	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
 }
