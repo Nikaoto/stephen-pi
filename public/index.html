@@ -38,6 +38,9 @@
 	  <!-- Audio source -->
 	  <div id="audio"></div>
   </body>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+
   <script>
 		const SPEAK_CONFIG = { speed: 150, wordgap: 3, pitch: 62  }
 		const callSpeak = (text) => speak(text, SPEAK_CONFIG)
@@ -118,9 +121,16 @@
 		}
 
 	  function onLoad() {
+	  	const socket = io.connect(location.protocol + "//" + document.domain + ":" + location.port)
+
+	  	socket.on("answer", (ans) => {
+	  		deliverAnswer(ans)
+	  	})
+
 	    document.getElementById("ask").onclick = () => {
 	    	const question = document.getElementById("question-input").value.toLowerCase()
-	    	evaluateQuestion(question)
+	    	socket.emit("question", question)
+	    	//evaluateQuestion(question)
 	    }
 		}
 
