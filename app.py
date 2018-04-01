@@ -1,6 +1,6 @@
 from flask import Flask, send_from_directory
 from flask_socketio import SocketIO, emit
-#import evaluator
+import evaluator
 
 app = Flask(__name__, static_folder="public", static_url_path="")
 app.config["SECRET_KEY"] = "secret!"
@@ -12,7 +12,7 @@ def index():
 
 @socketio.on("question")
 def handle_question(question):
-	emit("answer", question)
+	emit("answer", evaluator.evaluate(question))
 
 if (__name__ == "__main__"):
 	socketio.run(app)

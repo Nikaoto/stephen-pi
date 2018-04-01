@@ -2,7 +2,7 @@
 default_answer = "I am both sure and unsure of your question. Try measuring it better."
 keygroups = [{
 	"keywords": ["black", "hole"],
-	"answer": "According to the theory of relativity, nothing can travel faster than light. Thus if light cannot escape,neither can anythingelse.everything is dragged back by the gravitational field. So one has a set of events, a region of space-time, from which it is not possible to escape to reach a distant observer. This region is what we now call a black hole.",
+	"answer": "According to the theory of relativity, nothing can travel faster than light. Thus if light cannot escape,neither can anything else. Everything is dragged back by the gravitational field. So one has a set of events, a region of space-time, from which it is not possible to escape to reach a distant observer. This region is what we now call a black hole.",
 }, {
 	"keywords": ["back", "time"],
 	"answer": "A possible way to explain the absence of visitors from the future would be to say that the past is fixed because we have observed it and seen that it does not have the kind of warping needed to allow travel back from the future. On the other hand, the future is unknown and open, so it might well have the curvature required. This would mean that any time travel would be confined to the future. There would be no chance of Captain Kirk andthe Starship Enterprise turning up at the present time."

@@ -1,4 +1,5 @@
 import answers
+keygroups = answers.keygroups
 
 def includes(question, keywords):
 	for word in keywords:
@@ -7,7 +8,7 @@ def includes(question, keywords):
 	return True
 
 def evaluate(question):
-	for i in range (0, len(answers["keygroups"])):
+	for i in range (0, len(keygroups)):
 		if (includes(question, keygroups[i]["keywords"])):
 			answer = keygroups[i]["answer"]
 			while (answer == ""):
