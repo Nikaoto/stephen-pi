@@ -4,6 +4,7 @@
 EUHack entry.
 
 ---
+### Stephen Pi
 
 Answers your physics-related queries in Stephen Hawking's beautiful voice.
 
