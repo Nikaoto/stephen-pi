@@ -1,5 +1,9 @@
-# Stephen Pi
+# stephen-pi-hackathon
+*Mar 30, 2018 - Apr 2, 2018*
+
 EUHack entry.
+
+---
 
 Answers your physics-related queries in Stephen Hawking's beautiful voice.
 
