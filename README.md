@@ -4,13 +4,16 @@
 EUHack entry.
 
 ---
+
 ### Stephen Pi
 
-Answers your physics-related queries in Stephen Hawking's beautiful voice.
+Answers your physics-related questions in Stephen Hawking's beautiful voice.
 
 Demo: https://stephen-pi.herokuapp.com/
 
-## Using
+---
+
+### Using
 * Flask
 * gunicorn
 * [speak.js](https://github.com/mattytemple/speak-js)
